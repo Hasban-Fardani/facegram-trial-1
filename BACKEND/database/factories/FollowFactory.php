@@ -16,9 +16,14 @@ class FollowFactory extends Factory
      */
     public function definition(): array
     {
+        do {
+            $following_id = $this->faker->numberBetween(1, 12);
+            $follower_id = $this->faker->numberBetween(1, 12);
+        } while ($following_id === $follower_id);
+
         return [
-            'following_id' => fake()->numberBetween(1, 12),
-            'follower_id' => fake()->numberBetween(1, 12),
+            'following_id' => $following_id,
+            'follower_id' => $follower_id,
             'is_accepted' => fake()->numberBetween(0, 1),
         ];
     }

@@ -77,11 +77,23 @@ class FollowController extends Controller
 
     public function followers()
     {
-        $followers_id = Follow::where('following_id', auth()->user()->id)
-            ->get()
-            ->pluck('follower_id');
+        $followers = Follow::where('following_id', auth()->user()->id)
+            ->get();
+        $followers_id = $followers->pluck('follower_id');
+        $is_accepted = $followers->pluck('is_accepted');
         
         $users = User::whereIn('id', $followers_id)->get();
+        $users = $users->map(function ($user, $index) use ($is_accepted) {
+            return [
+                "id" => $user->id,
+                "full_name"=> $user->full_name,
+                "username"=> $user->username,
+                "bio"=> $user->bio,
+                "is_private"=> $user->is_private,
+                "created_at"=> $user->created_at,
+                'is_requested' => !$is_accepted[$index],
+            ];
+        });
 
         return response()->json([
             'followers' => $users
@@ -97,7 +109,7 @@ class FollowController extends Controller
         $users = User::whereIn('id', $followings_id)->get();
         
         return response()->json([
-            'followers' => $users
+            'following' => $users
         ], 200);
     }
 
@@ -130,4 +142,5 @@ class FollowController extends Controller
             'message' => "Follow request is accepted"
         ], 200);
     }
+
 }

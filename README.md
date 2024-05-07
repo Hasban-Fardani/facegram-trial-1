@@ -9,6 +9,7 @@ Facegram adalah sebuah aplikasi mirip seperti instagram dimana user dapat meliha
 - axios
 
 ## Fitur
+### Backend
 - [x] Authentikasi
     - [x] Login  
     - [x] Register   
@@ -28,6 +29,9 @@ Facegram adalah sebuah aplikasi mirip seperti instagram dimana user dapat meliha
 - [x] User
     - [x] Get user
     - [x] Get detail user by username
+
+## Frontend
+
 
 ## Catatan
 Aplikasi ini terbagi menjadi 2, yaitu frontend dan backend, anda harus menjalankannya secara bersamaan lalu membuka url frontend untuk melihat tampilan website dengan backend untuk menjalankan logika bisnis aplikasi

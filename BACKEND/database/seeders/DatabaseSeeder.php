@@ -38,6 +38,6 @@ class DatabaseSeeder extends Seeder
 
         PostAttachment::factory(20)->create();
 
-        Follow::factory(50)->create();
+        Follow::factory(60)->create();
     }
 }

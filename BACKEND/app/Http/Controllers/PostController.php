@@ -24,9 +24,11 @@ class PostController extends Controller
         $size = intval($request->input('size', 10));
         $page = intval($request->input('page', 0));
 
+        $offset = $page > 0 ? $page * $size - 1 : 0;
         $posts = Post::with(['user', 'attachments'])
+            ->latest()
             ->limit($size)
-            ->offset($page)
+            ->offset($offset)
             ->get();
       
         return response()->json([

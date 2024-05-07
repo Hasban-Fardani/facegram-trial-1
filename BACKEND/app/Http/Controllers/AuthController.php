@@ -13,14 +13,14 @@ class AuthController extends Controller
 
     public function login(Request $request) {
         $data = $this->validateRequest($request, [
-            'username' => 'required|exists:users,username',
+            'username' => 'required',
             'password' => 'required'
         ]);
 
         if (!auth()->attempt($data))
         {
             return response()->json([
-                'message' => 'Wrong password'
+                'message' => 'Wrong username or password'
             ], 401);
         }
 

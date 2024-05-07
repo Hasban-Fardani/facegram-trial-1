@@ -32,13 +32,14 @@ Route::prefix('v1')->group(function (){
 
         Route::apiResource('posts', PostController::class)
             ->except(['show', 'update']);
-
+            
+        Route::get('/following', [FollowController::class, 'following']);
+        Route::get('/followers', [FollowController::class, 'followers']);
+        
         Route::prefix('/users')->group(function () {
             Route::post('/{user:username}/follow', [FollowController::class, 'follow']);
             Route::put('/{user:username}/accept', [FollowController::class, 'accept']);
             Route::delete('/{user:username}/unfollow', [FollowController::class, 'unfollow']);
-            Route::get('/{user:username}/following', [FollowController::class, 'following']);
-            Route::get('/{user:username}/followers', [FollowController::class, 'followers']);
         });
         Route::get('/users', [UserController::class, 'index']);
         Route::get('/users/{user:username}', [UserController::class, 'show']);
