@@ -7,7 +7,8 @@ const form = ref({
   full_name: '',
   bio: '',
   username: '',
-  password: ''
+  password: '',
+  is_private: false
 })
 
 const error = ref({
@@ -68,7 +69,13 @@ const register = async () => {
               required
             />
           </div>
-          <button type="submit" class="btn btn-primary">Login</button>
+          <div class="mb-2 d-flex gap-1 align-items-center">
+            <label for="is_private">
+              <input type="checkbox" name="is_private" v-model="form.is_private" />
+              is private
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary">Register</button>
         </div>
       </form>
     </div>

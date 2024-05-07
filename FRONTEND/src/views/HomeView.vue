@@ -115,7 +115,7 @@ const acceptFollow = async (username) => {
       </div>
     </div>
 
-    <div class="requested-section">
+    <div class="requested-section" v-if="user.isPrivate == true">
       <h2>Requested follow</h2>
       <div class="d-flex overflow-x-auto" v-if="requestedFollowers">
         <div v-for="userRequested in requestedFollowers">

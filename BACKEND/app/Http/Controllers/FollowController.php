@@ -116,8 +116,8 @@ class FollowController extends Controller
     public function accept(User $user)
     {
         $authId = auth()->user()->id;
-        $follow = Follow::where('follower_id', $authId)
-            ->where('following_id', $user->id)
+        $follow = Follow::where('follower_id', $user->id)
+            ->where('following_id', $authId)
             ->first();
 
         if (!$follow) 

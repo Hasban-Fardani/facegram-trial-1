@@ -65,5 +65,5 @@ export const useUser = defineStore('user', () => {
     localStorage.clear()
   }
 
-  return { token, name, isLogin, clear, login, logout, register }
+  return { token, name, isLogin, isPrivate, clear, login, logout, register }
 })

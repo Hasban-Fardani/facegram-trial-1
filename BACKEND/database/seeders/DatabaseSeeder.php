@@ -34,10 +34,10 @@ class DatabaseSeeder extends Seeder
 
         User::factory(10)->create();
 
-        Post::factory(30)->create();
+        Post::factory(50)->create();
 
         PostAttachment::factory(20)->create();
 
-        Follow::factory(60)->create();
+        Follow::factory(33)->create();
     }
 }

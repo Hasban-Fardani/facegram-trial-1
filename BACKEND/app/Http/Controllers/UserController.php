@@ -36,7 +36,7 @@ class UserController extends Controller
             $followStatus = $follow->is_accepted ? 'following' : 'requested';
         }
 
-        if (!$user->is_private || ($user->is_private && $followStatus == 'following'))
+        if ((!$user->is_private || $is_your_account) || ($user->is_private && $followStatus == 'following'))
         {
             $user = $user->load(['posts', 'posts.attachments']);
         }

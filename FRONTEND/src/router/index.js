@@ -45,6 +45,14 @@ const router = createRouter({
       }
     },
     {
+      path: '/create-post',
+      name: 'create-post',
+      component: () => import('../views/CreatePostView.vue'),
+      meta: {
+        guard: 'auth'
+      }
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: 'not-found',
       component: () => import('../views/NotFoundView.vue')
